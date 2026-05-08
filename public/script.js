@@ -28,8 +28,19 @@ generateBtn.addEventListener("click", async () => {
     const data = await response.json();
 
     qrResult.innerHTML = `
-      <img src="${data.qrCode}" alt="QR Code" />
-    `;
+  <img src="${data.qrCode}" alt="QR Code" />
+
+  <br><br>
+
+  <a
+    href="${data.qrCode}"
+    download="qr-code.png"
+  >
+    <button>
+      Download QR Code
+    </button>
+  </a>
+`;
 
   } catch (error) {
     console.error(error);
