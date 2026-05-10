@@ -16,30 +16,33 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 app.post("/generate", async (req, res) => {
   try {
-    const { text } = req.body;
+    const { text, size } = req.body;
+    const requestedSize = Number(size);
+    const qrWidth =
+      Number.isFinite(requestedSize) && requestedSize >= 100
+        ? requestedSize
+        : 300;
 
     if (!text) {
       return res.status(400).json({
-        error: "Text is required"
+        error: "Text is required",
       });
     }
 
-    // Generate QR code as Data URL
-    const qrCode = await QRCode.toDataURL(text);
+    // Generate QR code as Data URL with the requested size
+    const qrCode = await QRCode.toDataURL(text, { width: qrWidth });
 
     res.json({
-      qrCode
+      qrCode,
     });
-
   } catch (error) {
     console.error(error);
 
     res.status(500).json({
-      error: "Failed to generate QR code"
+      error: "Failed to generate QR code",
     });
   }
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

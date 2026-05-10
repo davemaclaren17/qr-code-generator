@@ -1,32 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Generator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <button id="themeToggle">Dark Mode</button>
+      <h1>QR Code Generator</h1>
 
-  <div class="container">
-    <button id="themeToggle">
-  Dark Mode
-</button>
-    <h1>QR Code Generator</h1>
+      <input type="text" id="qrInput" placeholder="Enter text or URL" />
 
-    <input
-      type="text"
-      id="qrInput"
-      placeholder="Enter text or URL"
-    >
+      <label for="qrSize" class="size-label">QR size</label>
+      <select id="qrSize">
+        <option value="200">200 × 200</option>
+        <option value="300" selected>300 × 300</option>
+        <option value="400">400 × 400</option>
+        <option value="500">500 × 500</option>
+      </select>
 
-    <button id="generateBtn">
-      Generate QR Code
-    </button>
+      <button id="generateBtn">Generate QR Code</button>
 
-    <div id="qrResult"></div>
-  </div>
+      <div id="qrResult"></div>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
