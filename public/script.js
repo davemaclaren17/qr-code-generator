@@ -1,6 +1,7 @@
 const generateBtn = document.getElementById("generateBtn");
 const qrInput = document.getElementById("qrInput");
 const qrResult = document.getElementById("qrResult");
+const themeToggle = document.getElementById("themeToggle");
 
 generateBtn.addEventListener("click", async () => {
 
@@ -46,4 +47,16 @@ generateBtn.addEventListener("click", async () => {
     console.error(error);
     alert("Failed to generate QR code");
   }
+});
+
+themeToggle.addEventListener("click", () => {
+
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    themeToggle.textContent = "Light Mode";
+  } else {
+    themeToggle.textContent = "Dark Mode";
+  }
+
 });
